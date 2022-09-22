@@ -31,11 +31,9 @@
 
 	const getRandomElement = () => {
 		let element = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-		element.setAttribute('width', randomPosition());
-		element.setAttribute('height', randomPosition());
-		element.setAttribute('rx', randomPosition());
-		element.setAttribute('y', randomPosition());
-		element.setAttribute('x', randomPosition());
+		['width', 'height', 'rx', 'x', 'y'].forEach((attribute) => {
+			element.setAttribute(attribute, randomPosition());
+		});
 		element.setAttribute('fill', randomHexColor());
 		return element;
 	};
