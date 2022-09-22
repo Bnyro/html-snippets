@@ -7,14 +7,30 @@
 		<title>SVG Randomizer</title>
 	</head>
 	<body>
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"></svg>
-		<button onclick="generateSVG()">Generate</button>
+		<div id="svg-container">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"></svg>
+		</div>
+		<div id="btn-container">
+			<button onclick="generateSVG()">Generate</button>
+			<button onclick="downloadSVG()">Download</button>
+		</div>
 	</body>
 </html>
 
 <script>
 	let $ = document.querySelector.bind(document);
 	let $$ = document.querySelectorAll.bind(document);
+
+	const download = (filename, text, type) => {
+		var file = new Blob([text], { type: type });
+
+		const elem = document.createElement('a');
+
+		elem.href = URL.createObjectURL(file);
+		elem.download = filename;
+		elem.click();
+		elem.remove();
+	};
 
 	const randomHexColor = () => {
 		const randomColor = Math.floor(Math.random() * 16777215).toString(16);
@@ -46,6 +62,10 @@
 		}
 	};
 
+	const downloadSVG = () => {
+		download('output.svg', $('#svg-container').innerHTML, 'image/svg+xml');
+	};
+
 	generateSVG();
 </script>
 
@@ -69,8 +89,12 @@
 		cursor: pointer;
 		border-radius: 1rem;
 		padding: 1rem;
-		margin-top: 2rem;
+		margin: 1rem;
 		filter: drop-shadow(0 0 0.5rem lightblue);
 		width: min-content;
+	}
+	#btn-container {
+		margin-top: 1rem;
+		display: flex;
 	}
 </style>
