@@ -7,9 +7,7 @@
 		<title>SVG Randomizer</title>
 	</head>
 	<body>
-		<div id="svg-container">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"></svg>
-		</div>
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"></svg>
 		<button onclick="generateSVG()">Generate</button>
 	</body>
 </html>
@@ -60,15 +58,20 @@
 	body {
 		display: flex;
 		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		min-height: 100vh;
 	}
 	svg {
 		width: 30rem;
 		height: 30rem;
+		border-radius: 1rem;
 	}
 	button {
 		cursor: pointer;
 		border-radius: 1rem;
 		padding: 1rem;
+		margin-top: 2rem;
 		filter: drop-shadow(0 0 0.5rem lightblue);
 		width: min-content;
 	}
