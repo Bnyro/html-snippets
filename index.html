@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>SVG Randomizer</title>
+	</head>
+	<body>
+		<div id="svg-container">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"></svg>
+		</div>
+		<button onclick="generateSVG()">Generate</button>
+	</body>
+</html>
+
+<script>
+	let $ = document.querySelector.bind(document);
+	let $$ = document.querySelectorAll.bind(document);
+
+	const randomHexColor = () => {
+		const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+		return `#${randomColor}`;
+	};
+
+	const getRandomInt = (max) => {
+		return Math.floor(Math.random() * max);
+	};
+
+	const randomPosition = () => {
+		return getRandomInt(100);
+	};
+
+	const getRandomElement = () => {
+		let element = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+		element.setAttribute('width', randomPosition());
+		element.setAttribute('height', randomPosition());
+		element.setAttribute('rx', randomPosition());
+		element.setAttribute('y', randomPosition());
+		element.setAttribute('x', randomPosition());
+		element.setAttribute('fill', randomHexColor());
+		return element;
+	};
+
+	const generateSVG = () => {
+		$('svg').innerHTML = '';
+		const childAmount = getRandomInt(100);
+		for (let i = 0; i < childAmount; i++) {
+			$('svg').appendChild(getRandomElement());
+		}
+	};
+
+	generateSVG();
+</script>
+
+<style>
+	html {
+		background: #1f1f1f;
+	}
+	body {
+		display: flex;
+		flex-direction: column;
+	}
+	svg {
+		width: 30rem;
+		height: 30rem;
+	}
+	button {
+		cursor: pointer;
+		border-radius: 1rem;
+		padding: 1rem;
+		filter: drop-shadow(0 0 0.5rem lightblue);
+		width: min-content;
+	}
+</style>
