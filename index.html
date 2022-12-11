@@ -1,74 +1,100 @@
-<html>
-  <head>
-    <title>Image Preview</title>
-    <link rel="shortcut icon" type="image/png">
-  </head>
-  <body>
-    <input id="upload" type="file" accept="image/*" onchange="onChange()">
-    <label for="upload">Upload Image</label>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>SVG Randomizer</title>
+	</head>
+	<body>
+		<div id="svg-container">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"></svg>
+		</div>
+		<div id="btn-container">
+			<button onclick="generateSVG()">Generate</button>
+			<button onclick="downloadSVG()">Download</button>
+		</div>
+	</body>
 </html>
 
 <script>
-  let $ = document.querySelector.bind(document);
-  let imageInput = $('input');
+	let $ = document.querySelector.bind(document);
+	let $$ = document.querySelectorAll.bind(document);
 
-  function onChange() {
-    const [file] = imageInput.files
-    if (!file) return;
-    let url = URL.createObjectURL(file);
-    loadImage(url);
-    saveImage(file);
-  }
-  
-  function saveImage(file) {
-    const reader = new FileReader();
-    
-    reader.addEventListener("load", () => {
-      localStorage.setItem("image", reader.result);
-    }, false);
-    
-    if (file) {
-      reader.readAsDataURL(file);
-    }
-  }
-  
-  function loadImage(url) {
-    $('html').style.backgroundImage = `url(${url})`;
-    $('link[rel*=icon]').href = url;
-  }
-  
-  const url = localStorage.getItem("image");
-  loadImage(url);
+	const download = (filename, text, type) => {
+		var file = new Blob([text], { type: type });
+
+		const elem = document.createElement('a');
+
+		elem.href = URL.createObjectURL(file);
+		elem.download = filename;
+		elem.click();
+		elem.remove();
+	};
+
+	const randomHexColor = () => {
+		const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+		return `#${randomColor}`;
+	};
+
+	const getRandomInt = (max) => {
+		return Math.floor(Math.random() * max);
+	};
+
+	const randomPosition = () => {
+		return getRandomInt(100);
+	};
+
+	const getRandomElement = () => {
+		let element = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+		['width', 'height', 'rx', 'x', 'y'].forEach((attribute) => {
+			element.setAttribute(attribute, randomPosition());
+		});
+		element.setAttribute('fill', randomHexColor());
+		return element;
+	};
+
+	const generateSVG = () => {
+		$('svg').innerHTML = '';
+		const childAmount = getRandomInt(100);
+		for (let i = 0; i < childAmount; i++) {
+			$('svg').appendChild(getRandomElement());
+		}
+	};
+
+	const downloadSVG = () => {
+		download('output.svg', $('#svg-container').innerHTML, 'image/svg+xml');
+	};
+
+	generateSVG();
 </script>
 
 <style>
-   html {
-    background: #1f1f1f;
-    background-repeat: no-repeat;
-    background-size: 100vw 100vh;
-    overflow: hidden;
-  }
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-  }
-  input[type=file] {
-    display: none;
-  }
-  label[for=upload] {
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
-    color: #ccc;
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-  }
-  label[for=upload]:hover {
-    background: rgba(50, 50, 50, 0.5);
-  }
+	html {
+		background: #1f1f1f;
+	}
+	body {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		min-height: 100vh;
+	}
+	svg {
+		width: 30rem;
+		height: 30rem;
+		border-radius: 1rem;
+	}
+	button {
+		cursor: pointer;
+		border-radius: 1rem;
+		padding: 1rem;
+		margin: 1rem;
+		filter: drop-shadow(0 0 0.5rem lightblue);
+		width: min-content;
+	}
+	#btn-container {
+		margin-top: 1rem;
+		display: flex;
+	}
 </style>

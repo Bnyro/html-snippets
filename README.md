@@ -1,2 +1,2 @@
-# ImagePreview
-Simple preview of images with HTML and JS
+## HTML Snippets
+Collection of small HTML scripts
