@@ -1,0 +1,78 @@
+footer {
+    background-color: var(--surface);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem 0;
+    color: var(--on-surface);
+}
+
+footer #brand {
+    font-weight: 1000;
+    color: var(--on-surface);
+    text-transform: lowercase;
+    transform: scaleY(0.9);
+}
+
+#social-icons {
+    display: flex;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#social-icons a {
+    margin: 0 0.7rem;
+    position: relative;
+}
+
+#social-icons a img {
+    height: 1.5rem;
+    width: auto;
+    filter: invert() brightness(0.8);
+}
+
+#social-icons a::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 0.5rem 0.6rem;
+    border-radius: 1rem;
+    position: absolute;
+    top: calc(-50% + 5px);
+    left: calc(-50% + 3px);
+    background: var(--surface);
+    filter: brightness(0.7);
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+}
+
+#social-icons a:hover::before {
+    opacity: 1;
+}
+
+#social-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+#social-links a {
+    color: var(--on-surface);
+    margin: 0.5rem 0;
+}
+
+#social-links a:hover {
+    color: var(--on-hover);
+}
+
+#copyright {
+    color: var(--on-surface);
+    filter: brightness(0.7);
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    margin-bottom: 5vh;
+}

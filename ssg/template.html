@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="{{language}}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="title" property="og:title" content="{{meta:title}}">
+    <meta name="type" property="og:type" content="{{meta:type}}">
+    <meta name="image" property="og:image" content="{{meta:image}}">
+    <meta name="url" property="og:url" content="{{meta:url}}">
+    <meta name="description" property="og:description" content="{{meta:description}}">
+
+    <link rel="icon" href="/static/icon.svg">
+
+    <link rel="stylesheet" href="/static/style.css">
+
+    <title>{{doc:title}} ⋅ {{title}}</title>
+</head>
+
+<body>
+
+    <nav>
+        <a href="/">
+            <h3>{{doc:title}}</h3>
+        </a>
+        <ol>
+            {{navlinks}}
+        </ol>
+    </nav>
+
+    <main>
+
+        <header>
+
+            <span id="options-container">
+
+                <div class="icon" id="print">&#128438;</div>
+                <div class="icon" id="theme-mode">&#127779;</div>
+
+                <select id="theme-select">
+                    <option value="colibri">Colibri</option>
+                    <option value="rose-pine">Rosé Pine</option>
+                    <option value="material">Material</option>
+                </select>
+
+            </span>
+
+            <a class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+
+        </header>
+
+        <section>
+
+            <h1>{{title}}</h1>
+            <p>By {{author}}, {{date}}</p>
+
+            {{content}}
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
+
+<script src="/static/app.js"></script>

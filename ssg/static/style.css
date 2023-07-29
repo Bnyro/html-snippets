@@ -1,0 +1,173 @@
+:root {
+    --base: #3b224c;
+    --surface: #281733;
+    --text: #bcbdd0;
+    --accent: #c8c9db;
+    --links: #ECCDBA;
+}
+
+.rose-pine {
+    --base: #1f1d2e;
+    --surface: #191724;
+    --text: #e0def4;
+    --accent: #908caa;
+    --links: #eb6f92;
+}
+
+.material {
+    --base: #1f1b16;
+    --surface: #50453a;
+    --text: #fffbff;
+    --accent: #faefe7;
+    --links: #8a5200;
+}
+
+* {
+    box-sizing: border-box;
+    transition: all 0.2s linear;
+}
+
+html {
+    color: var(--text);
+    background: var(--base);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: var(--links);
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+section {
+    margin: 0 8vw;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--surface);
+    transition: all 0.3s;
+    width: 0;
+    overflow-x: hidden;
+}
+
+nav.visible {
+    width: 25rem;
+}
+
+nav h3 {
+    margin-left: 1.5rem;
+}
+
+nav ol {
+    margin: 0;
+    padding: 0 1.5rem;
+    counter-reset: item;
+}
+
+nav li {
+    margin: 0.8rem 0;
+    display: block;
+}
+
+nav li:before {
+    content: counters(item, ".") ". ";
+    font-weight: 700;
+    font-style: oblique;
+    counter-increment: item;
+}
+
+nav a {
+    color: var(--accent);
+}
+
+nav a:hover {
+    text-decoration: none;
+    opacity: 0.7;
+}
+
+.nav-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    height: 1rem;
+    width: 1.2rem;
+}
+
+.nav-toggle .bar {
+    height: 3px;
+    width: 100%;
+    background-color: var(--text);
+    transition: all 200ms ease-in-out;
+}
+
+.x {
+    width: 2rem;
+}
+
+.x:nth-of-type(1) {
+    transform: rotate(45deg);
+    transform-origin: top left;
+}
+
+.x:nth-of-type(2) {
+    transform-origin: center;
+    width: 0;
+}
+
+.x:nth-of-type(3) {
+    transform: rotate(-45deg);
+    transform-origin: bottom left;
+}
+
+#options-container {
+    display: flex;
+}
+
+#options-container>* {
+    margin: 0 1rem;
+}
+
+.icon {
+    height: 1.5rem;
+    width: 1.5rem;
+    scale: 1.8;
+    cursor: pointer;
+}
+
+.icon:hover {
+    filter: drop-shadow(0 0 0.5rem var(--accent));
+}
+
+#theme-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin-left: 0;
+    background: none;
+    border: none;
+    scale: 1.2;
+    color: var(--text);
+    cursor: pointer;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>$ErrorName</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" href="./assets/error.svg" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,900" rel="stylesheet" />
+</head>
+
+<body>
+    <h1>$ErrorCode</h1>
+    <a href="/">Homepage</a>
+</body>
+
+</html>
+
+<style>
+    * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --background: #030005;
+        --primary: #ff005a;
+        --secondary: #8400ff;
+    }
+
+    body {
+        padding: 0;
+        margin: 0;
+        font-family: "Montserrat", sans-serif;
+        line-height: 1.2;
+        text-align: center;
+        height: 100vh;
+        background: var(--background);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    h1 {
+        font-size: 14rem;
+        font-weight: 900;
+        margin: 0;
+        margin-left: -0.75rem;
+        color: #030005;
+        text-transform: uppercase;
+        text-shadow: -1px -1px 0 var(--secondary), 1px 1px 0 var(--primary);
+        letter-spacing: -1.25rem;
+    }
+
+    a {
+        display: inline-block;
+        text-transform: uppercase;
+        color: var(--primary);
+        text-decoration: none;
+        border: 2px solid;
+        background: transparent;
+        padding: 0.7rem 2.5rem;
+        font-size: 0.9rem;
+        font-weight: 700;
+        -webkit-transition: 0.2s all;
+        transition: 0.2s all;
+    }
+
+    a:hover {
+        color: var(--secondary);
+    }
+</style>

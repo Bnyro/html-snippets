@@ -1,0 +1,146 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 70rem;
+    margin: auto;
+    background: var(--bg);
+    padding: 0 3rem;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type=checkbox] {
+    display: none;
+}
+
+#hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    height: 1.2rem;
+    width: 1.5rem;
+}
+
+#hamburger>span {
+    width: 100%;
+    height: 3px;
+    background: black;
+    transition: all 0.2s ease-in-out;
+}
+
+#nav-toggle:checked~#hamburger>span {
+    width: 1.6rem;
+}
+
+#nav-toggle:checked~#hamburger>span:nth-child(1) {
+    transform: rotate(45deg);
+    transform-origin: top left;
+}
+
+#nav-toggle:checked~#hamburger>span:nth-child(2) {
+    transform-origin: center;
+    width: 0rem;
+}
+
+#nav-toggle:checked~#hamburger>span:nth-child(3) {
+    transform: rotate(-45deg);
+    transform-origin: bottom left;
+}
+
+#navlinks {
+    display: flex;
+    position: absolute;
+    margin-top: 4rem;
+    padding: 1rem 2rem;
+    z-index: 100;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 3rem);
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1rem;
+    background: var(--base);
+    animation: fade-out 200ms ease-in-out forwards;
+}
+
+#navlinks>li {
+    list-style-type: none;
+    margin: 0.6rem 0;
+}
+
+#nav-toggle:checked~#navlinks {
+    animation: fade-in 200ms ease-in-out forwards;
+}
+
+#navlinks a {
+    font-weight: 700;
+}
+
+@keyframes fade-in {
+    from {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    to {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    from {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    to {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+@media only screen and (min-width: 700px) {
+    #hamburger {
+        display: none;
+    }
+
+    #navlinks {
+        margin: 0;
+        padding: 0;
+        background: none;
+        position: relative;
+        flex-direction: row;
+        animation: none;
+    }
+
+    #navlinks>li {
+        margin: 0 1.5rem;
+    }
+
+    #navlinks a {
+        position: relative;
+    }
+
+    #navlinks a::before {
+        content: "";
+        display: block;
+        height: 5px;
+        position: absolute;
+        left: 0;
+        bottom: -20px;
+        width: 100%;
+        background: linear-gradient(to right, var(--on-hover), var(--base));
+        opacity: 0;
+        transition: opacity 300ms ease-in-out;
+    }
+
+    #navlinks a:hover::before {
+        opacity: 1;
+    }
+}
