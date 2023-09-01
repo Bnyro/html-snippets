@@ -1,0 +1,119 @@
+/* Theme colors from the tomorrow night theme */
+
+:root {
+  --fg: #c5c8c6;
+  --bg: #1d1f21;
+  --surface: #373b41;
+  --accent: #b294bb;
+  --red: #cc6666;
+  --green: #75bd68;
+  --yellow: #f0c674;
+  --r: 0.5rem;
+}
+
+html {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 95vh;
+}
+
+#table {
+  display: flex;
+  flex-direction: column;
+}
+
+#table div {
+  display: flex;
+}
+
+#table span, #keyboard span {
+  border-radius: var(--r);
+  background-color: var(--surface);
+  color: var(--accent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+#table span {
+  height: 5rem;
+  width: 5rem;
+  margin: 0.5rem;
+}
+
+#table span.correct {
+  color: var(--green);
+}
+
+#table span.exists {
+  color: var(--yellow);
+}
+
+#table span.false {
+  color: var(--red);
+}
+
+#keyboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+#keyboard div {
+  display: flex;
+}
+
+#keyboard span {
+  height: 4rem;
+  width: 4rem;
+  margin: 0.3rem;
+  cursor: pointer;
+}
+
+#keyboard span:hover {
+  filter: brightness(1.2);
+}
+
+.invisible {
+  display: none !important;
+}
+
+#result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+#result button {
+  margin-top: 0.5rem;
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--accent);
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 200ms ease-in-out;
+}
+
+button:hover {
+  filter: drop-shadow(0 0 0.3rem var(--accent));
+}
