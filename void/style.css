@@ -1,0 +1,32 @@
+main {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  overflow-x: none;
+  height: 100vh;
+}
+
+section {
+  min-height: 90vh;
+  scroll-snap-align: center;
+}
+
+#hero-container {
+  display: flex;
+  max-width: min(90vw, 50rem);
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+#logo {
+  width: min(30vw, 12rem);
+  min-height: 5vh;
+}
+
+#hero-links {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}

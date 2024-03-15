@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Void Linux packages</title>
+    <link rel="stylesheet" href="../root.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" href="../assets/void.svg" type="image/svg+xml" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <section>
+        <div id="search-container">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Package or description"
+            onkeypress="onKeyPress(event)"
+            autofocus
+          />
+          <button id="search-submit" class="button" onclick="onSearch()">
+            Search
+          </button>
+          <a
+            class="button"
+            target="_blank"
+            href="https://repo-default.voidlinux.org/void-updates/void-updates.txt"
+            >Outdated</a
+          >
+        </div>
+        <div id="search-results"></div>
+      </section>
+    </main>
+  </body>
+</html>
